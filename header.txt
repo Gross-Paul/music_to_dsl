@@ -1,0 +1,8 @@
+application Tetris { 
+  actionneurs : 
+    actionneur BUZZER { 
+      value : LOW 
+      broche : 14 
+    }
+
+states :

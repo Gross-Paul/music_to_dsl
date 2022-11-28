@@ -1,0 +1,110 @@
+application LedClignotte { 
+   
+  capteurs : 
+    capteur BUTTON1 { 
+      value : 1 
+      type : DIGITAL 
+      broche : 12 
+       
+    } 
+  actionneurs : 
+    actionneur LED { 
+      value : LOW 
+      broche : 13 
+       
+    } 
+    actionneur BUZZER { 
+      value : LOW 
+      broche : 14 
+       
+    } 
+  states : 
+    state STATE1 { 
+      initial : true 
+       
+      transaction : 
+        transaction state : State { 
+           
+          condition : 
+            sensor comparison transaction sensor : Capteur { 
+              value : HIGH 
+               
+            } 
+        } 
+      actuator state : 
+        actuator state actuator : Actionneur { 
+          current state : LOW 
+           
+        } 
+        actuator state actuator : Actionneur { 
+          current state : LOW 
+           
+        } 
+    } 
+    state STATE2 { 
+      initial : false 
+       
+      transaction : 
+        transaction state : State { 
+           
+          condition : 
+            sensor comparison transaction sensor : Capteur { 
+              value : LOW 
+               
+            } 
+        } 
+      actuator state : 
+        actuator state actuator : Actionneur { 
+          current state : HIGH 
+           
+        } 
+        actuator state actuator : Actionneur { 
+          current state : HIGH 
+           
+        } 
+    } 
+    state STATE3 { 
+      initial : false 
+       
+      transaction : 
+        transaction state : State { 
+           
+          condition : 
+            sensor comparison transaction sensor : Capteur { 
+              value : HIGH 
+               
+            } 
+        } 
+      actuator state : 
+        actuator state actuator : Actionneur { 
+          current state : HIGH 
+           
+        } 
+        actuator state actuator : Actionneur { 
+          current state : HIGH 
+           
+        } 
+    } 
+    state STATE4 { 
+      initial : false 
+       
+      transaction : 
+        transaction state : State { 
+           
+          condition : 
+            sensor comparison transaction sensor : Capteur { 
+              value : LOW 
+               
+            } 
+        } 
+      actuator state : 
+        actuator state actuator : Actionneur { 
+          current state : LOW 
+           
+        } 
+        actuator state actuator : Actionneur { 
+          current state : LOW 
+           
+        } 
+    } 
+}
