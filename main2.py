@@ -1,3 +1,4 @@
+import random
 import re
 f = open("input.txt", "r")
 tones_file = open("notes.txt", "r")
@@ -15,8 +16,10 @@ for line in tones_file:
 
 text = f.read()
 
-buzzers = 5
+buzzers = 2
 
+note_duration = 100
+switches = 3
 
 # split when there is a line with only \n
 splitted = re.split("\n\n", text)
@@ -37,24 +40,29 @@ for block in splitted:
             line = compo[1]
             tone = compo[0]
 
-
             if line[i].isalpha():
                 if line[i].isupper():
                     note = line[i] + "S" + tone
                 elif line[i].islower():
                     note = line[i].upper() + tone
+
                 notes.append(int(notesDict[note]))
-                print(f"tone(0,{notesDict[note]}, 25);")
                 got_note = False
 
-
-
-        notes.sort()
-        # take middle note
+        for k in range(len(notes)):
+            print(f"tone({k},{notes[k]}, {170});")
+            #print(f"tone({k},{notes[k]}, {note_duration / (len(notes))});")
+            #print(f"delay({note_duration / (len(notes))});") 
         
-        if len(notes) > 0:
-            print(f"tone(0,{notes[0]}, 25);")
-             
-        print("delay(125);")
+
+        
+
+        print(f"delay({140});")
+            
+
+            
+            
+            
+            
 
 
